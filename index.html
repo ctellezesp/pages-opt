@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sincronizacion de Procesos</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <meta name="author" content="Carlos Tellez">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css">
+  	body{
+  		background: #263238;
+  	}
+
+  	#cardp{
+  		margin-top: 90px;
+  	}
+  </style>
+  <script type="text/javascript">
+  	function opt(){
+  		var datos = new Array();
+  		var det = new Array();
+  		var key1 = "data";
+  		var key2 = "content-";
+  		var aux = 0;
+  		var fallo = "";
+  		var pos = 0;
+  		var res = 0;
+  		var cont = 0;
+  		var asig = false;
+  		for(i=1; i<=12; i++)
+  			datos[i] = document.getElementById(key1+i).value;
+  		det[1] = datos[1];
+  		det[2] = "";
+  		det[3] = "";
+  			document.getElementById("content-1").innerHTML = det[1] + "<br>" + det[2]  + "<br>" + det[3] + "<br>" + "F";
+  		
+  		for(i=2; i<=12; i++){
+  			aux = 0;
+  			fallo = "";
+  			asig = false;
+  			for(j=1; j<=3; j++){
+  				if(det[j]==datos[i]){
+  					aux++;
+  				}
+  			}
+			if(aux == 0){
+				for(k=1; k<=3; k++){
+					if(det[k]==""){
+						det[k] = datos[i];
+						fallo = "F";
+						asig = true;
+						k=5;
+					}
+				}
+				
+				if(asig == false){
+					for(n=1; n<=3; n++){
+						for(l=i+1; l<=12; l++){
+							if(datos[l]==det[n]){
+								cont++;	
+							}
+						}
+						if(cont<=res){
+							pos = n;
+						}
+						res = cont;
+						cont = 0;
+					}
+					det[pos] = datos[i];
+					fallo = "F";
+				}
+				
+
+			document.getElementById(key2+i).innerHTML = det[1] + "<br>" + det[2]  + "<br>" + det[3] + "<br>" + fallo;
+			}
+			else if(aux>0){
+				fallo = "";
+				document.getElementById(key2+i).innerHTML = det[1] + "<br>" + det[2]  + "<br>" + det[3] + "<br>" + fallo;
+			}
+  		}
+  	}
+  </script>
+</head>
+<body>
+<div class="row">
+	<div class="col m10 offset-m1">
+		<h3 class="center-align white-text">Sincronización de Procesos</h3>
+		<h5 class="center-align white-text">Page Address - OPT</h5>
+		<div class="card">
+			<div class="row">
+				<div class="col s1">
+					<input type="number" id="data1" placeholder="Dato 1">
+				</div>
+				<div class="col s1">
+					<input type="number" id="data2" placeholder="Dato 2">
+				</div>
+				<div class="col s1">
+					<input type="number" id="data3" placeholder="Dato 3">
+				</div>
+				<div class="col s1">
+					<input type="number" id="data4" placeholder="Dato 4">
+				</div>
+				<div class="col s1">
+					<input type="number" id="data5" placeholder="Dato 5">
+				</div>
+				<div class="col s1">
+					<input type="number" id="data6" placeholder="Dato 6">
+				</div>
+				<div class="col s1">
+					<input type="number" id="data7" placeholder="Dato 7">
+				</div>
+				<div class="col s1">
+					<input type="number" id="data8" placeholder="Dato 8">
+				</div>
+				<div class="col s1">
+					<input type="number" id="data9" placeholder="Dato 9">
+				</div>
+				<div class="col s1">
+					<input type="number" id="data10" placeholder="Dato 10">
+				</div>
+				<div class="col s1">
+					<input type="number" id="data11" placeholder="Dato 11">
+				</div>
+				<div class="col s1">
+					<input type="number" id="data12" placeholder="Dato 12">
+				</div>
+			</div>
+		</div>
+		<a class="waves-effect waves-light btn right" onclick="opt()"><i class="material-icons left">done</i>Generar</a>
+		<div class="card" id="cardp">
+			<div class="row">
+				<div class="col s1">
+					<p id="content-1"></p>
+				</div>
+				<div class="col s1">
+					<p id="content-2"></p>
+				</div>
+				<div class="col s1">
+					<p id="content-3"></p>
+				</div>
+				<div class="col s1">
+					<p id="content-4"></p>
+				</div>
+				<div class="col s1">
+					<p id="content-5"></p>
+				</div>
+				<div class="col s1">
+					<p id="content-6"></p>
+				</div>
+				<div class="col s1">
+					<p id="content-7"></p>
+				</div>
+				<div class="col s1">
+					<p id="content-8"></p>
+				</div>
+				<div class="col s1">
+					<p id="content-9"></p>
+				</div>
+				<div class="col s1">
+					<p id="content-10"></p>
+				</div>
+				<div class="col s1">
+					<p id="content-11"></p>
+				</div>
+				<div class="col s1">
+					<p id="content-12"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
